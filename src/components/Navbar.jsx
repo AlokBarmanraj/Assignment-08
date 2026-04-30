@@ -5,13 +5,34 @@ import { useState } from "react";
 import Link from "next/link";
 import NavSearch from "./NavSearch";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathName = usePathname();
+  const navLink = (
+    <>
+      <Link
+        href="/"
+        className={`${pathName === "/" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
+      >
+        Home
+      </Link>
+      <li>
+        <Link
+          href="/products"
+          className={`${pathName === "/products" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
+        >
+          Products
+        </Link>
+      </li>
+    </>
+  );
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#0053e2] backdrop-blur-lg p-2 text-white">
       <header className="flex h-16 items-center justify-between px-6">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center gap-3 justify-center">
           <button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -48,7 +69,7 @@ const Navbar = () => {
                 alt="Logo"
                 width={120}
                 height={40}
-                className="w-24 sm:w-24 md:w-28 h-auto"
+                className="w-14 sm:w-14 md:w-18 h-auto"
               />
             </Link>
           </div>
@@ -59,21 +80,13 @@ const Navbar = () => {
 
         <div className="flex gap-5">
           <div>
-            <ul className="hidden sm:flex gap-3.5">
-            <li>
-              <Link href="/" className="no-underline text-white text-lg font-bold">
-               Home
-              </Link>
-            </li>
-              <li>
-                <Link href="/products" className="no-underline text-white text-lg font-bold">
-                  Products
-                </Link>
-              </li>
-            </ul>
+            <ul className="hidden sm:flex gap-3.5">{navLink}</ul>
           </div>
           <div className="hidden sm:flex justify-center items-center gap-1">
-            <Link href="/account">
+            <Link
+              href="/account"
+              className={`${pathName === "/account" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
+            >
               {" "}
               <div className="cursor-pointer">
                 <svg
@@ -94,7 +107,7 @@ const Navbar = () => {
             </Link>
             <Link
               href="/signin"
-              className="cursor-pointer no-underline text-white text-lg font-bold"
+              className={`${pathName === "/signin" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
             >
               Sign In
             </Link>
@@ -124,16 +137,31 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
-            <li>
-              <Link href="/products" className="block py-2 no-underline">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/account" className="block py-2 no-underline">
-                Account
-              </Link>
-            </li>
+            {navLink}
+            <Link
+              href="/account"
+              className={`${pathName === "/account" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
+            >
+              <span className="flex">
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
+                </span>
+                <span>Account</span>
+              </span>
+            </Link>
           </ul>
         </div>
       )}
@@ -142,56 +170,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
