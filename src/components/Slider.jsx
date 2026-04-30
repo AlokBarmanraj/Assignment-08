@@ -1,82 +1,68 @@
-// "use client";
-// import React from "react";
-// import { Slide } from "@tenedev/react-slideshow";
-
-// const Slider = () => {
-//   const images = [
-//     "https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg",
-//     "https://cdn.pixabay.com/photo/2015/04/19/08/32/flower-729510_1280.jpg",
-//     "https://img.freepik.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80",
-//   ];
-//   return (
-//     <div className="w-full max-w-5xl mx-auto mt-6">
-//       <Slide
-//         images={images}
-//         duration={4000}
-//         autoSwitch={true}
-//         infiniteLoop={true}
-//         buttonPosition="overlay"
-//         showIndicators={true}
-//         pauseOnHover={true}
-//         animation="slide"
-//         customButton={{
-//           left: "❮",
-//           right: "❯",
-//         }}
-//         onSlideChange={(i) => console.log("Current Slide:", i)}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Slider;
-
 "use client";
 import React from "react";
 import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 const Slideshow = () => {
   const images = [
-    "images/image1.jpg",
-    "images/image2.webp",
-    "images/image3.jpg",
-    "images/image4.avif",
-    "images/image5.jpg",
+    "/images/image1.jpg",
+    "/images/image2.webp",
+    "/images/image3.jpg",
+    "/images/image4.avif",
+    "/images/image5.jpg",
   ];
 
   const zoomInProperties = {
     scale: 1,
-    duration: 1500,
+    duration: 2000,
     transitionDuration: 500,
     infinite: true,
+    indicators: true,
 
     prevArrow: (
-      <div className="absolute left-5 top-1/2 -translate-y-1/2 z-20">
-        <ArrowLeftIcon className="ml-5 h-10 w-10 text-white bg-black/40 p-2 rounded-full cursor-pointer" />
+      <div className="absolute top-1/2 left-5 -translate-y-1/2 z-20 pointer-events-auto">
+        <ArrowLeftIcon className="h-10 w-10 text-white bg-black/40 p-2 rounded-full cursor-pointer hover:bg-black/70 transition backdrop-blur-sm" />
       </div>
     ),
 
     nextArrow: (
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 z-20">
-        <ArrowRightIcon className="mr-5 h-10 w-10 text-white bg-black/40 p-2 rounded-full cursor-pointer" />
+      <div className="absolute top-1/2 right-5 -translate-y-1/2 z-20 pointer-events-auto">
+        <ArrowRightIcon className="h-10 w-10 text-white bg-black/40 p-2 rounded-full cursor-pointer hover:bg-black/70 transition backdrop-blur-sm" />
       </div>
     ),
   };
 
   return (
-    <div className="w-full h-screen">
+    <div className="relative w-full h-[400px] md:h-[650px] overflow-hidden">
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
-          <div
-            key={index}
-            className="flex justify-center md:items-center items-start w-screen h-[650px] relative"
-          >
-            <img className="w-full bg-cover" fill src={each} />
+          <div key={index} className="relative w-full h-[400px] md:h-[650px]">
+            <Image
+              src={each}
+              alt={`slide-${index}`}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
           </div>
         ))}
       </Zoom>
+
+      <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center z-10 pointer-events-none">
+        <h1 className="text-2xl md:text-5xl font-bold">
+          Welcome to My Store
+        </h1>
+        <p className="mt-3 text-sm md:text-lg">
+          Discover amazing products at the best price
+        </p>
+        <button className="mt-5 px-6 py-2 bg-blue-600 rounded-md pointer-events-auto">
+          Shop Now
+        </button>
+      </div>
     </div>
   );
 };
