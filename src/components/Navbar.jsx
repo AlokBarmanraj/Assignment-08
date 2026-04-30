@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { Link, Button } from "@heroui/react";
+// import { Link, Button } from "@heroui/react";
+import Link from "next/link";
 import NavSearch from "./NavSearch";
 import Image from "next/image";
 
@@ -18,7 +19,7 @@ const Navbar = () => {
           >
             <span className="sr-only">Menu</span>
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 cursor-pointer"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -40,38 +41,63 @@ const Navbar = () => {
               )}
             </svg>
           </button>
-          <div className="flex items-center  shrink-0 -ml-3">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={120}
-              height={40}
-              className="w-24 sm:w-24 md:w-28 h-auto"
-            />
+          <div className="flex items-center shrink-0">
+            <Link href="/">
+              <Image
+                src="/images/logo.png"
+                alt="Logo"
+                width={120}
+                height={40}
+                className="w-24 sm:w-24 md:w-28 h-auto"
+              />
+            </Link>
           </div>
         </div>
         <div>
           <NavSearch></NavSearch>
         </div>
+
         <div className="flex gap-5">
-          <div className="hidden sm:flex cursor-pointer">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-              </svg>
-            </div>
-            <h3>Sign In</h3>
+          <div>
+            <ul className="hidden sm:flex gap-3.5">
+            <li>
+              <Link href="/" className="no-underline text-white text-lg font-bold">
+               Home
+              </Link>
+            </li>
+              <li>
+                <Link href="/products" className="no-underline text-white text-lg font-bold">
+                  Products
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="hidden sm:flex justify-center items-center gap-1">
+            <Link href="/account">
+              {" "}
+              <div className="cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                </svg>
+              </div>
+            </Link>
+            <Link
+              href="/signin"
+              className="cursor-pointer no-underline text-white text-lg font-bold"
+            >
+              Sign In
+            </Link>
           </div>
           <div className="relative inline-block">
             <svg
@@ -99,13 +125,13 @@ const Navbar = () => {
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
             <li>
-              <Link href="#" className="block py-2">
-                Features
+              <Link href="/products" className="block py-2 no-underline">
+                Products
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2">
-                Pricing
+              <Link href="/account" className="block py-2 no-underline">
+                Account
               </Link>
             </li>
           </ul>
