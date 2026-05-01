@@ -5,12 +5,19 @@ import React from "react";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
 
-const SunglassCard = ({ item }) => {
-  const { id,name, brand, price, rating, image } = item;
+const BeachProductsCard = ({item}) => {
+  const { id, name, brand, price, rating, image } = item;
   return (
     <div className="max-w-[420px] h-[450px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl">
-      <Link href={`/sunglasses/${id}`}><Image src={image} width={220} height={120} alt={item.name}
-      className="object-contain h-[220px] w-[420px]"></Image></Link>
+      <Link href={`/accessories/${id}`}>
+        <Image
+          src={image}
+          width={220}
+          height={120}
+          alt={item.name}
+          className="object-contain h-[220px] w-[420px]"
+        ></Image>
+      </Link>
       <p className=" text-lg font-bold">Name: {name}</p>
       <p>Brand: {brand}</p>
       <p className="text-lg font-bold">Price: ${price}</p>
@@ -33,7 +40,7 @@ const SunglassCard = ({ item }) => {
         </div>
       </Button>
     </div>
-  );
+    );
 };
 
-export default SunglassCard;
+export default BeachProductsCard;

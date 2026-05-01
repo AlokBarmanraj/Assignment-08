@@ -7,11 +7,11 @@ import Image from "next/image";
 
 const Slideshow = () => {
   const images = [
-    "/images/image1.jpg",
-    "/images/image2.webp",
-    "/images/image3.jpg",
-    "/images/image4.avif",
-    "/images/image5.jpg",
+    "/images/pice1.png",
+    "/images/pice2.png",
+    "/images/pice3.png",
+    "/images/pice4.png",
+    "/images/pice5.png",
   ];
 
   const zoomInProperties = {
@@ -35,15 +35,15 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="relative w-full h-[400px] md:h-[650px] overflow-hidden mt-10">
+    <div className="relative h-[250px] md:h-[450px] overflow-hidden mt-10 rounded-xl">
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
-          <div key={index} className="relative w-full h-[400px] md:h-[650px]">
+          <div key={index} className="relative w-full h-[250px] md:h-[450px]">
             <Image
               src={each}
               alt={`slide-${index}`}
               fill
-              className="object-cover"
+              className="object-contain"
               priority={index === 0}
             />
           </div>
@@ -53,9 +53,7 @@ const Slideshow = () => {
       <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center z-10 pointer-events-none">
-        <h1 className="text-2xl md:text-5xl font-bold">
-          Welcome to My Store
-        </h1>
+        <h1 className="text-2xl md:text-5xl font-bold">Welcome to My Store</h1>
         <p className="mt-3 text-sm md:text-lg">
           Discover amazing products at the best price
         </p>
