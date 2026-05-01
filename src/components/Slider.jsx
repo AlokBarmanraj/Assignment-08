@@ -35,7 +35,7 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="relative w-full h-[400px] md:h-[650px] overflow-hidden">
+    <div className="relative w-full h-[400px] md:h-[650px] overflow-hidden mt-10">
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
           <div key={index} className="relative w-full h-[400px] md:h-[650px]">

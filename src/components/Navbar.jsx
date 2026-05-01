@@ -1,16 +1,31 @@
 "use client";
 import React from "react";
-import { useState } from "react";
-// import { Link, Button } from "@heroui/react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavSearch from "./NavSearch";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { MdAccountCircle } from "react-icons/md";
+import { TbSunglassesFilled } from "react-icons/tb";
+import { IoShirtSharp } from "react-icons/io5";
+import { GiLipstick } from "react-icons/gi";
+import { FaUmbrellaBeach } from "react-icons/fa";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathName = usePathname();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   const navLink = (
     <>
       <Link
@@ -19,13 +34,89 @@ const Navbar = () => {
       >
         Home
       </Link>
-      <li>
-        <Link
-          href="/products"
-          className={`${pathName === "/products" ? "text-amber-500 font-bold" : "text-white font-bold"}`}
+
+      <li className="relative" ref={dropdownRef}>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsDropdownOpen(!isDropdownOpen);
+          }}
+          className="flex items-center gap-1 cursor-pointer"
         >
-          Products
-        </Link>
+          <span
+            className={`${
+              pathName.startsWith("/products")
+                ? "text-amber-500 font-bold"
+                : "text-white font-bold"
+            }`}
+          >
+            Products
+          </span>
+
+          <svg
+            className={`w-4 h-4 transition-transform ${
+              isDropdownOpen ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+
+        {isDropdownOpen && (
+          <ul className="absolute left-0 mt-2 w-44 bg-[#0053e2] text-white rounded-md shadow-lg z-50 overflow-hidden font-bold">
+            <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
+              <Link href="/products/sunglasses">
+                <div className="flex items-center gap-2 text-lg">
+                  <span>
+                    <TbSunglassesFilled />
+                  </span>
+                  <span>Sunglasses</span>
+                </div>
+              </Link>
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
+              <Link href="/products/summerOutfits">
+                {" "}
+                <div className="flex items-center gap-2 text-lg">
+                  <span>
+                    <IoShirtSharp />
+                  </span>
+                  <span>Summer Outfits</span>
+                </div>
+              </Link>
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
+              <Link href="/products/skincare">
+                {" "}
+                <div className="flex items-center gap-2 text-lg">
+                  <span>
+                    <GiLipstick />
+                  </span>
+                  <span>Skincare</span>
+                </div>
+              </Link>
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
+              <Link href="/products/accessories">
+                {" "}
+                <div className="flex items-center gap-2 text-lg">
+                  <span>
+                    <FaUmbrellaBeach />
+                  </span>
+                  <span>Beach Accessories</span>
+                </div>
+              </Link>
+            </li>
+          </ul>
+        )}
       </li>
     </>
   );

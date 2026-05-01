@@ -78,12 +78,11 @@ const Footer = () => {
               <p>FAQ</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-2xl font-bold">Support</h3>
-              <p>Support Center</p>
-              <p>How to Order</p>
-              <p>Payment</p>
-              <p>Shipping</p>
-              <p>FAQ</p>
+              <h3 className="text-2xl font-bold">Your Information</h3>
+              <p>Your information is used to process orders</p>
+              <p>improve our services</p>
+              <p>provide customer support</p>
+              <p>important updates related to your purchase</p>
             </div>
           </div>
         </div>
