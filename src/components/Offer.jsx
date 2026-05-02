@@ -5,8 +5,8 @@ import React from "react";
 
 const Offer = () => {
   return (
-    <div className="mt-10 flex items-center justify-center">
-      <div>
+    <div className="mt-10 flex flex-col-reverse lg:flex-row items-center justify-center">
+      <div className="text-center">
         <div>
           <Image src="/images/50.png" width={500} height={250} alt="50"></Image>
         </div>
@@ -22,7 +22,7 @@ const Offer = () => {
           src={
             "https://healthway.com.bd/media/images/CeraVe_Moisturizing_blgjBPL.original.jpegquality-60.format-webp.webp"
           }
-          width={400}
+          width={500}
           height={150}
           alt="offer products"
         ></Image>

@@ -4,6 +4,7 @@ import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import Link from "next/link";
 
 const Slideshow = () => {
   const images = [
@@ -57,9 +58,12 @@ const Slideshow = () => {
         <p className="mt-3 text-sm md:text-lg">
           Discover amazing products at the best price
         </p>
-        <button className="mt-5 px-6 py-2 bg-blue-600 rounded-md pointer-events-auto">
-          Shop Now
-        </button>
+        <Link href="/products">
+          {" "}
+          <button className="mt-5 px-6 py-2 bg-blue-600 rounded-md pointer-events-auto cursor-pointer font-bold hover:bg-amber-500">
+            Shop Now
+          </button>
+        </Link>
       </div>
     </div>
   );
