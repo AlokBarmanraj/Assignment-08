@@ -12,7 +12,7 @@ const SunglassDetailsPage = async ({ params }) => {
   const data = await res.json();
   const sunglass = data.find((su) => su.id == sunglassDetails);
 
-  const { id, name, brand, price, rating, image,description } = sunglass;
+  const { name, brand, price, rating, image,description } = sunglass;
 
   return (
     <div className="max-w-[620px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl mt-16 mb-16 mx-auto">
@@ -37,7 +37,7 @@ const SunglassDetailsPage = async ({ params }) => {
         </div>
         {rating}
       </h4>
-      <Button className="hover:bg-amber-500 hover:text-white">
+      <Button className="hover:bg-amber-500 hover:text-white mt-5">
         <div className="flex items-center gap-1">
           <span>
             <TiShoppingCart />

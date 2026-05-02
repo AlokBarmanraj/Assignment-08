@@ -1,26 +1,24 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import { FaPlus } from "react-icons/fa";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
 
-const SummerOutfitsCard = ({ item }) => {
-  const { id, name, brand, price, rating, image } = item;
+const SkincareDetailsPage = async ({ params }) => {
+  const { skincareDetails } = await params;
+  const res = await fetch("https://skincare-een9.onrender.com/skincare");
+  const data = await res.json();
+  const skin = data.find((sk) => sk.id == skincareDetails);
+  const { name, brand, price, rating, image, description } = skin;
+
   return (
-    <div className="max-w-[420px] h-[460px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl">
-      <Link href={`/products/summerOutfits/${id}`}>
-        <Image
-          src={image}
-          width={220}
-          height={120}
-          alt={item.name}
-          className="object-contain h-[220px] w-[420px]"
-        ></Image>
-      </Link>
+    <div className="max-w-[620px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl mt-16 mb-16 mx-auto">
+      <Image src={image} width={520} height={320} alt={name}></Image>
       <p className=" text-lg font-bold">Name: {name}</p>
       <p>Brand: {brand}</p>
       <p className="text-lg font-bold">Price: ${price}</p>
+      <p className="text-lg font-bold">Description: {description}</p>
       <h4 className="flex items-center gap-1.5">
         <div className="flex text-amber-500">
           <IoIosStar />
@@ -36,11 +34,14 @@ const SummerOutfitsCard = ({ item }) => {
           <span>
             <TiShoppingCart />
           </span>
-          <span></span> Buy Now
+          <span>Add to Card</span>
+          <span>
+            <FaPlus />
+          </span>
         </div>
       </Button>
     </div>
   );
 };
 
-export default SummerOutfitsCard;
+export default SkincareDetailsPage;

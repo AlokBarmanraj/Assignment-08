@@ -9,7 +9,7 @@ const SkincareCard = ({item}) => {
   const { id, name, brand, price, rating, image } = item;
 
   return (
-    <div className="max-w-[420px] h-[450px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl">
+    <div className="max-w-[420px] h-[460px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl">
       <Link href={`/products/skincare/${id}`}>
         <Image
           src={image}
@@ -32,7 +32,7 @@ const SkincareCard = ({item}) => {
         </div>
         {rating}
       </h4>
-      <Button className="hover:bg-amber-500 hover:text-white">
+      <Button className="hover:bg-amber-500 hover:text-white mt-5">
         <div className="flex items-center gap-1">
           <span>
             <TiShoppingCart />

@@ -8,12 +8,12 @@ import { TiShoppingCart } from "react-icons/ti";
 const OfferCard = ({ item }) => {
   const { id, name, brand, originalPrice, rating, image, tag,salePrice } = item;
   return (
-    <div className="max-w-[420px] h-[450px] bg-white border border-gray-200 rounded-xl space-y-1 shadow-2xl">
+    <div className="max-w-[420px] h-[460px] bg-white border border-gray-200 rounded-xl space-y-1 shadow-2xl">
         <div className="flex justify-end">
             <div className="bg-red-400 w-20 text-center font-bold rounded-full">{tag}</div>
         </div>
       <div className=" p-8">
-        <Link href={`/offer/${id}`}>
+        <Link href={`/products/offer/${id}`}>
           <Image
             src={image}
             width={220}
@@ -35,7 +35,7 @@ const OfferCard = ({ item }) => {
           </div>
           {rating}
         </h4>
-        <Button className="hover:bg-amber-500 hover:text-white">
+        <Button className="hover:bg-amber-500 hover:text-white mt-5">
           <div className="flex items-center gap-1">
             <span>
               <TiShoppingCart />
