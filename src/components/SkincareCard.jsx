@@ -7,9 +7,10 @@ import { TiShoppingCart } from "react-icons/ti";
 
 const SkincareCard = ({item}) => {
   const { id, name, brand, price, rating, image } = item;
+
   return (
     <div className="max-w-[420px] h-[450px] bg-white border border-gray-200 p-8 rounded-xl space-y-1 shadow-2xl">
-      <Link href={`/skincare/${id}`}>
+      <Link href={`/products/skincare/${id}`}>
         <Image
           src={image}
           width={220}
@@ -44,3 +45,11 @@ const SkincareCard = ({item}) => {
 };
 
 export default SkincareCard;
+
+
+
+
+
+
+
+

@@ -133,6 +133,21 @@ const nextConfig = {
         hostname: "images.marleylilly.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "healthway.com.bd",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "bluequailclothing.com",
+        pathname: "**",
+      },
     ],
   },
 };

@@ -16,7 +16,7 @@ const Slideshow = () => {
 
   const zoomInProperties = {
     scale: 1,
-    duration: 2000,
+    duration: 3000,
     transitionDuration: 500,
     infinite: true,
     indicators: true,

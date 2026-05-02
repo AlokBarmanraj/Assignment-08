@@ -73,6 +73,16 @@ const Navbar = () => {
         {isDropdownOpen && (
           <ul className="absolute left-0 mt-2 w-44 bg-[#0053e2] text-white rounded-md shadow-lg z-50 overflow-hidden font-bold">
             <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
+              <Link href="/products/offer">
+                {" "}
+                <div className="flex items-center gap-2 text-lg">
+                  <span>
+                  </span>
+                  <span>Offer</span>
+                </div>
+              </Link>
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-100 hover:text-amber-500">
               <Link href="/products/sunglasses">
                 <div className="flex items-center gap-2 text-lg">
                   <span>

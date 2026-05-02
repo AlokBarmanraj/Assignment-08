@@ -30,7 +30,9 @@ const NavSearch = () => {
               placeholder="Search..."
             />
             <SearchField.ClearButton />
-            <SearchField.SearchIcon />
+            <div className="cursor-pointer">
+              <SearchField.SearchIcon/>
+            </div>
           </SearchField.Group>
         </SearchField>
       </div>
